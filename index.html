@@ -9,7 +9,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       margin: 0;
       padding: 0;
       height: 100vh;
@@ -32,15 +32,15 @@
       display: block;
       width: 20px;
       height: 20px;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.6);
       animation: float 10s linear infinite;
       bottom: -150px;
       clip-path: polygon(50% 0%, 61% 12%, 75% 12%, 88% 25%, 88% 39%, 75% 52%, 50% 100%, 25% 52%, 12% 39%, 12% 25%, 25% 12%, 39% 12%);
     }
     .hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .hearts span:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .hearts span:nth-child(2) { left: 30%; animation-delay: 2s; }
     .hearts span:nth-child(3) { left: 50%; animation-delay: 4s; }
-    .hearts span:nth-child(4) { left: 75%; animation-delay: 6s; }
+    .hearts span:nth-child(4) { left: 70%; animation-delay: 6s; }
     .hearts span:nth-child(5) { left: 90%; animation-delay: 8s; }
 
     @keyframes float {
@@ -48,48 +48,43 @@
       100% { transform: translateY(-800px) scale(1.2); opacity: 0; }
     }
 
-    /* Unlock Box */
-    .container {
+    /* Common Box */
+    .box {
       position: relative;
       z-index: 1;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(12px);
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.2);
       text-align: center;
       width: 90%;
-      max-width: 400px;
-      animation: fadeIn 1.2s ease;
+      max-width: 380px;
+      animation: fadeIn 1s ease;
     }
-    h1 {
+    h1, h2, p {
       color: #fff;
-      font-size: 22px;
-      margin-bottom: 10px;
     }
-    p {
-      color: #fff;
-      font-size: 14px;
-    }
-    input[type="date"] {
-      padding: 12px;
+    input {
       width: 100%;
+      padding: 12px;
+      margin: 10px 0;
       border-radius: 10px;
       border: none;
-      margin-top: 15px;
-      font-size: 16px;
+      font-size: 14px;
       outline: none;
     }
     button {
-      padding: 12px 20px;
+      width: 100%;
+      padding: 12px;
       margin-top: 15px;
       background: #ff4081;
       color: white;
       border: none;
       border-radius: 10px;
       font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
-      width: 100%;
       transition: 0.3s;
     }
     button:hover {
@@ -137,13 +132,23 @@
     <span></span><span></span><span></span><span></span><span></span>
   </div>
 
-  <div class="container" id="unlockBox">
+  <!-- Login Box -->
+  <div class="box" id="loginBox">
+    <h2>💖 Welcome 💖</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- Date Unlock Box -->
+  <div class="box" id="unlockBox" style="display:none;">
     <h1>🔒 Select the Special Date</h1>
     <p>Choose the right date to unlock the letter 🌸</p>
     <input type="date" id="dateInput" value="2010-04-01" min="2010-04-01" max="2010-04-30">
     <button onclick="checkDate()">Unlock</button>
   </div>
 
+  <!-- Letter -->
   <div class="letter" id="letter">
 My Dear Ruki 🌸,  
 
@@ -160,6 +165,22 @@ Rafid</span>
   </div>
 
   <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      // 🔑 Login details
+      const correctUser = "ruki";
+      const correctPass = "love123";
+
+      if (user === correctUser && pass === correctPass) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("unlockBox").style.display = "block";
+      } else {
+        alert("❌ Wrong username or password!");
+      }
+    }
+
     function checkDate() {
       const input = document.getElementById("dateInput").value;
       const correctDate = "2010-04-22";
