@@ -1,1 +1,139 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Special Letter for Ruki 🌸</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Unlock Box */
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 20px;
+    }
+
+    input[type="date"] {
+      padding: 12px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin-top: 15px;
+      background: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #d81b60;
+    }
+
+    /* Fullscreen Letter */
+    .letter {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fffafc;
+      color: #333;
+      padding: 25px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      font-size: 18px;
+      line-height: 1.8;
+      white-space: pre-line;
+      animation: slideUp 1.2s ease forwards;
+      font-family: 'Dancing Script', cursive, 'Georgia', serif;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 30px;
+      font-style: italic;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+  <!-- Google Font for Handwritten Style -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Unlock Box -->
+  <div class="container" id="unlockBox">
+    <h1>🔒 Select the Special Date</h1>
+    <p>Choose the right date to unlock the letter 🌸</p>
+    <input type="date" id="dateInput" value="2010-04-01" min="2010-04-01" max="2010-04-30">
+    <button onclick="checkDate()">Unlock</button>
+  </div>
+
+  <!-- Fullscreen Letter -->
+  <div class="letter" id="letter">
+My Dear Ruki 🌸,  
+
+I don’t always find the right words, but today I just want to write something for you—something straight from my heart. You are not just a friend to me, you are a little star who lights up even the dullest of my days. Your cuteness, your smile, and your little talks bring me peace in a way I can’t really explain.  
+
+Sometimes life feels heavy, but having you beside me makes everything softer and lighter. You remind me that small things can carry the biggest happiness—like the way a tiny flower can make a whole garden beautiful. That’s what you are in my life—a little flower with endless meaning.  
+
+Even though you are younger than me, I feel like I learn from your pure heart every day. Your kindness, your laughter, and your presence make me grateful that I get to call you my friend. I hope you always stay the same—the cute, pure, and lovely Ruki I know.  
+
+Never forget this: no matter how far, no matter how hard life gets, I’ll always be here, caring for you, protecting you, and cheering for your happiness.  
+
+<span class="signature">With warmth,  
+Rafid</span>
+  </div>
+
+  <script>
+    function checkDate() {
+      const input = document.getElementById("dateInput").value;
+      const correctDate = "2010-04-22";
+      if (input === correctDate) {
+        document.getElementById("unlockBox").style.display = "none";
+        document.getElementById("letter").style.display = "block";
+      } else {
+        alert("❌ Wrong date! Try again.");
+      }
+    }
+  </script>
+</body>
+</html>
